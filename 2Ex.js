@@ -1,18 +1,20 @@
-let m = "yessir";
+let m = "yessir"; //message
 
 console.log(typeof m, m);
 
-let n = 92;
+let n = 92;//number 
 
 console.log(typeof n, n);
 
-let b = true;
+let b = true;//boolean
 
 console.log(typeof b, b);
 
-let u = kiiil;
+let u = kiiil;//underfind
 
 console.log(typeof u, u)
 
-let s = 
+let s = Symbol('yyy');
+
+console.log (typof s,s )
 
