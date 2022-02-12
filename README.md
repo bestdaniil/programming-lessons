@@ -1,2 +1,2 @@
-# programming-lessons
-# Даниил Бестужев 
+# programming-lesson
+Даниил Бестужев
