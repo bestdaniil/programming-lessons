@@ -18,5 +18,6 @@
   "homepage": "https://github.com/bestdaniil/programming-lessons#readme",
   "dependencies": {
     "axios": "^0.26.1"
-  }
+  },
+  "devDependencies": {}
 }
