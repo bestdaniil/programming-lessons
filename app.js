@@ -1,25 +1,44 @@
-const { rejects } = require("assert");
-const { resolve } = require("path");
-
-const fs = requier('fs');
-const axios = requier('axios');
-
-writeJsonplaceholderToFile.then(() => {
-
+const express = require('express');
+const app = express();
+app.set('port', process.env.PORT || 3000);
+// пользовательская страница 404
+app.use(function (req, res) {
+    res.type('text/plain');
+    res.status(404);
+    res.send('Найдено');
+});
+// пользовательская страница 500
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.type('text/plain');
+    res.status(500);
+    res.send('500 — Ошибка сервера');
+});
+app.listen(app.get('port'), function () {
+    console.log('Express запущен на http://localhost:' +
+        app.get('port') + '; нажмите Ctrl+C для завершения.');
+});
+app.get('/', function (req, res) {
+    res.type('text/plain');
+    res.send('Главная страница');
+});
+app.get('/about', function (req, res) {
+    res.type('text/plain');
+    res.send('О главной странице');
+});
+// пользовательская страница 404
+app.use(function (req, res, next) {
+    res.type('text/plain');
+    res.status(404);
+    res.send('404 — Не найдено');
+});
+app.get('/about*', function (req, res) {
+    // отправляем контент...
 })
-.catch(e => console. error(e));
-
-function writeJsonplaceholderToFile() {
-    return new Promise((resolve, reject) => 
-        axios.get( 'https://jsonplaceholder.typicode.com/todos')
-        .then(res => {
-            const json = JSON.stringify(res.data);
-            fs.writeFile ('todos.json', json, (err) => {
-                if(err) return reject (err);
-
-                resolve ()
-            }}
-        }}        
-        .catch(reject)
-    }} 
-}
+app.get('/about/contact', function (req, res) {
+    // отправляем контент...
+})
+app.get('/about/directions', function (req, res) {
+    // отправляем контент...
+})
+app.use(express.static(__dirname + '/public'));
